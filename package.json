@@ -1,0 +1,24 @@
+{
+  "name": "markdown-blog",
+  "version": "1.0.0",
+  "description": "Markdown blog using NEM: https://www.youtube.com/watch?v=1NrHkjlWVhM&list=LLvKuH8F9suijSyWPo71MCPQ&index=3&t=0s",
+  "main": "index.js",
+  "scripts": {
+    "dev:start": "nodemon server.js"
+  },
+  "author": "Navdeep",
+  "license": "ISC",
+  "dependencies": {
+    "dompurify": "^2.0.8",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "jsdom": "^16.2.1",
+    "marked": "^0.8.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.9.6",
+    "slugify": "^1.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
