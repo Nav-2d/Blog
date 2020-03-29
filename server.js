@@ -6,25 +6,25 @@ const articleRouter = require('./routes/articles');
 const methodOverride = require('method-override');
 const app = express();
 
-dotenv.config({ path: './config.env' });
-
 // mongoose.connect('mongodb://localhost/blog', {
 //     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
 // });
 
+dotenv.config({ path: './config.env' });
+
 const DB = process.env.DATABASE.replace(
-    '<PASSWORD>',
-    process.env.DATABASE_PASSWORD
+  '<PASSWORD>',
+  process.env.DATABASE_PASSWORD
 );
 
 mongoose
-    .connect(DB, {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useFindAndModify: false,
-        useUnifiedTopology: true
-    })
-    .then(() => console.log('DB Connection Successful'));
+  .connect(DB, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+  })
+  .then(() => console.log('DB Connection Successful'));
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
@@ -37,7 +37,16 @@ app.get('/', async (req, res) => {
 
 app.use('/articles', articleRouter);
 
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-    console.log(`App running on port ${port}`);
+const port = process.env.PORT || 3000;
+
+const server = app.listen(port, () => {
+  console.log(`App running on port ${port}`);
+});
+
+process.on('unhandledRejection', err => {
+  console.log('Unhandled rejection!');
+  console.log(err.name, err.message);
+  server.close(() => {
+    process.exit(1);
+  });
 });
