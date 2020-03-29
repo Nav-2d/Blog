@@ -4,6 +4,7 @@
   "description": "Markdown blog using NEM: https://www.youtube.com/watch?v=1NrHkjlWVhM&list=LLvKuH8F9suijSyWPo71MCPQ&index=3&t=0s",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "dev:start": "nodemon server.js"
   },
   "author": "Navdeep",
@@ -20,5 +21,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
+  },
+  "engines": {
+    "node": ">=10.0.0"
   }
 }
